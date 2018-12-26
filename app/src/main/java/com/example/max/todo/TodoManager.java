@@ -8,10 +8,10 @@ import java.util.UUID;
 
 public class TodoManager implements Serializable {
     // id of this TodoManager
-    UUID id;
+    private UUID id;
 
     // collection of ToDos
-    List<ToDoTask> todos;
+    private List<ToDoTask> todos;
 
     public TodoManager() {
         this.id = UUID.randomUUID();

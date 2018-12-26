@@ -4,16 +4,16 @@ import java.time.LocalDateTime;
 
 public class ToDoTask implements Comparable<ToDoTask> {
     // Completion date
-    LocalDateTime due;
+    private LocalDateTime due;
 
     // Creation date
-    LocalDateTime created;
+    private LocalDateTime created;
 
     // Task name
-    String name;
+    private String name;
 
     // Task desc
-    String desc;
+    private String desc;
 
     public ToDoTask(LocalDateTime due, LocalDateTime created, String name, String desc) {
         this.due = due;

@@ -32,6 +32,13 @@
         android:ems="10"
         android:inputType="textMultiLine" />
 
+    <Button
+        android:id="@+id/set_time"
+        android:layout_width="wrap_content"
+        android:layout_height="84dp"
+        android:text="@string/time_button"
+        android:onClick="showTimePickerDialog" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

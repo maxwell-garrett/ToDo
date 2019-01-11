@@ -10,7 +10,8 @@ import android.widget.EditText;
 import java.time.LocalDateTime;
 
 public class CreateToDoActivity extends AppCompatActivity {
-
+    private LocalDateTime dueTime = LocalDateTime.from(LocalDateTime.now());
+    private LocalDateTime creationTime = LocalDateTime.from(LocalDateTime.now());
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,8 +23,7 @@ public class CreateToDoActivity extends AppCompatActivity {
         String taskDesc = ((EditText) findViewById(R.id.task_desc)).getText().toString();
         ToDoManager manager = ToDoManager.getInstance();
 
-        ToDoTask task = new ToDoTask(LocalDateTime.from(LocalDateTime.now()),
-                LocalDateTime.from(LocalDateTime.now()), taskName, taskDesc);
+        ToDoTask task = new ToDoTask(dueTime, creationTime, taskName, taskDesc);
         manager.addToDo(task);
 
         Intent intent = new Intent(this, MainActivity.class);
@@ -38,5 +38,16 @@ public class CreateToDoActivity extends AppCompatActivity {
     public void showTimePickerDialog(View v) {
         DialogFragment newFragment = new TimePickerFragment();
         newFragment.show(getSupportFragmentManager(), "timePicker");
+    }
+
+    public void editDueTime(int year, int month, int dayOfMonth) {
+        dueTime.withYear(year);
+        dueTime.withMonth(month);
+        dueTime.withDayOfMonth(dayOfMonth);
+    }
+
+    public void editDueTime(int hourOfDay, int minute) {
+        dueTime.withHour(hourOfDay);
+        dueTime.withMinute(minute);
     }
 }

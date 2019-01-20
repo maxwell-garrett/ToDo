@@ -27,7 +27,7 @@ public class ToDoManager implements Serializable {
 
     public void addToDo(ToDoTask t) {
         this.todos.add(t);
-        Collections.sort(todos);
+        Collections.sort(this.todos);
     }
 
     public ToDoTask getTask(int pos) {

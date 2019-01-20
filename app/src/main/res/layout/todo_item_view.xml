@@ -15,11 +15,21 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline" />
 
     <TextView
+        android:id="@+id/taskDueTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/taskName"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
+
+    <TextView
         android:id="@+id/taskDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/taskName"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
+
+
+
 
     <View
         android:id="@+id/divider2"

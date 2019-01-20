@@ -1,15 +1,19 @@
 package com.example.max.todo;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 
 import java.time.LocalDateTime;
 
-public class CreateToDoActivity extends AppCompatActivity {
+public class CreateToDoActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
     private LocalDateTime dueTime = LocalDateTime.from(LocalDateTime.now());
     private LocalDateTime creationTime = LocalDateTime.from(LocalDateTime.now());
     @Override
@@ -36,18 +40,39 @@ public class CreateToDoActivity extends AppCompatActivity {
     }
 
     public void showTimePickerDialog(View v) {
+        Bundle bundle = new Bundle();
+        bundle.putString("time", Integer.toString(dueTime.getHour()) + "-" + Integer.toString(dueTime.getMinute()));
+
         DialogFragment newFragment = new TimePickerFragment();
+        newFragment.setArguments(bundle);
         newFragment.show(getSupportFragmentManager(), "timePicker");
     }
 
-    public void editDueTime(int year, int month, int dayOfMonth) {
-        dueTime.withYear(year);
-        dueTime.withMonth(month);
-        dueTime.withDayOfMonth(dayOfMonth);
+    public void showDatePickerDialog(View v) {
+        Bundle bundle = new Bundle();
+        bundle.putString("date", Integer.toString(dueTime.getDayOfMonth()) + "-" +
+                Integer.toString(dueTime.getMonthValue()) + "-" +
+                Integer.toString(dueTime.getYear()));
+
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.setArguments(bundle);
+        newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
-    public void editDueTime(int hourOfDay, int minute) {
-        dueTime.withHour(hourOfDay);
-        dueTime.withMinute(minute);
+    public LocalDateTime getDueTime() {
+        return dueTime;
+    }
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        dueTime = dueTime.withHour(hourOfDay);
+        dueTime = dueTime.withMinute(minute);
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        dueTime = dueTime.withYear(year);
+        dueTime = dueTime.withMonth(month);
+        dueTime = dueTime.withDayOfMonth(dayOfMonth);
     }
 }

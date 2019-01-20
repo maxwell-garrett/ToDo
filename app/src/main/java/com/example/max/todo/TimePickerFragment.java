@@ -7,22 +7,22 @@ import android.support.v4.app.DialogFragment;
 import android.text.format.DateFormat;
 import android.widget.TimePicker;
 
-import java.util.Calendar;
 
-public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+public class TimePickerFragment extends DialogFragment  {
+
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final Calendar c = Calendar.getInstance();
-        int hour = c.get(Calendar.HOUR_OF_DAY);
-        int minute = c.get(Calendar.MINUTE);
 
-        return new TimePickerDialog(getActivity(), this, hour, minute,
+        String[] time = getArguments().getString("time").split("-");
+
+        int hour = Integer.parseInt(time[0]);
+        int minute = Integer.parseInt(time[1]);
+
+
+        return new TimePickerDialog(getActivity(), (CreateToDoActivity) getActivity(), hour, minute,
                 DateFormat.is24HourFormat(getActivity()));
     }
 
-    @Override
-    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        ((CreateToDoActivity) getActivity()).editDueTime(hourOfDay, minute);
-    }
+
 }

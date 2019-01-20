@@ -12,12 +12,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView taskName, taskDesc;
+        public TextView taskName, taskDesc, taskDueTime;
 
         public MyViewHolder(View v) {
             super(v);
             taskName = (TextView) v.findViewById(R.id.taskName);
             taskDesc = (TextView) v.findViewById(R.id.taskDesc);
+            taskDueTime = (TextView) v.findViewById(R.id.taskDueTime);
         }
     }
 
@@ -44,9 +45,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ToDoTask t = manager.getTask(position);
         holder.taskName.setText(t.getName());
         holder.taskDesc.setText(t.getDesc());
+        holder.taskDueTime.setText(Integer.toString(t.getDue().getYear()));
+
 
     }
-
 
     @Override
     public int getItemCount() {

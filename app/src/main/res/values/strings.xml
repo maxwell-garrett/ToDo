@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ToDo</string>
     <string name="time_button">Set Time</string>
+    <string name="date_button">Set Date</string>
 </resources>

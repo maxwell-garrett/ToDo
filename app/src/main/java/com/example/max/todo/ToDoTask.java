@@ -3,18 +3,34 @@ package com.example.max.todo;
 import java.time.LocalDateTime;
 
 public class ToDoTask implements Comparable<ToDoTask> {
-    // Completion date
+    /**
+     * Due date of task
+     */
     private LocalDateTime due;
 
-    // Creation date
+    /**
+     * Creation date of task
+     */
     private LocalDateTime created;
 
-    // Task name
+    /**
+     * Task name
+     */
     private String name;
 
-    // Task desc
+    /**
+     * Task description
+     */
     private String desc;
 
+    /**
+     * Initialize ToDoTask object
+     *
+     * @param due date and time that the task is to be completed by
+     * @param created date and time that the task is created
+     * @param name task name
+     * @param desc task description
+     */
     public ToDoTask(LocalDateTime due, LocalDateTime created, String name, String desc) {
         this.due = due;
         this.created = created;
@@ -22,6 +38,12 @@ public class ToDoTask implements Comparable<ToDoTask> {
         this.desc = desc;
     }
 
+    /**
+     * implement comparing of ToDoTask objects
+     *
+     * @param o other ToDoTask object
+     * @return negative int if due before o, 0 if equal, positive int if due after o
+     */
     @Override
     public int compareTo(ToDoTask o) {
         return due.compareTo(o.getDue());

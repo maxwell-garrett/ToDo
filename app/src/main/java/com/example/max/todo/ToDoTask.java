@@ -49,18 +49,38 @@ public class ToDoTask implements Comparable<ToDoTask> {
         return due.compareTo(o.getDue());
     }
 
+    /**
+     * Return due instance variable
+     *
+     * @return due date and time of this ToDoTask object
+     */
     public LocalDateTime getDue() {
         return due;
     }
 
+    /**
+     * Return created instance variable
+     *
+     * @return created date and time of this ToDoTask object
+     */
     public LocalDateTime getCreated() {
         return created;
     }
 
+    /**
+     * Return name instance variable
+     *
+     * @return name of the ToDoTask
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Return desc instance variable
+     *
+     * @return description of the ToDoTask
+     */
     public String getDesc() {
         return desc;
     }

@@ -7,7 +7,9 @@ import android.support.v4.app.DialogFragment;
 import android.text.format.DateFormat;
 import android.widget.TimePicker;
 
-
+/* 
+    Pop-up to pick time
+*/
 public class TimePickerFragment extends DialogFragment  {
 
 
